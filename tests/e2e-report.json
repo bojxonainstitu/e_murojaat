@@ -1,0 +1,159 @@
+{
+  "flows": [
+    {
+      "case": "uz-Latn@320",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "uz-Latn@390",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "uz-Cyrl@320",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "uz-Cyrl@390",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "ru@320",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "ru@390",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "kaa@320",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "kaa@390",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "en@320",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    },
+    {
+      "case": "en@390",
+      "ok": true,
+      "steps": [
+        "landing",
+        "profile",
+        "attachments",
+        "voice",
+        "result",
+        "copy/docx/print"
+      ],
+      "voice": "ready",
+      "category": "labor",
+      "pageErrors": []
+    }
+  ],
+  "layout_issues": [],
+  "print": {
+    "doc": true,
+    "others": 0
+  }
+}

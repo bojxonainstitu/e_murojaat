@@ -1,0 +1,258 @@
+/* =====================================================================
+   E-murojat — YANGI OQIM USLUBLARI
+   (titul varaq, til tanlagich, qadamlar, dialog, kiritish qatori,
+    ovoz, fayllar, 5 natija oynasi, mobil va matn kesilmasligi qoidalari)
+   Faqat style.css dagi tokenlar ishlatiladi.
+   ===================================================================== */
+
+/* ---------- Umumiy: matn kesilmasin, mobil ---------- */
+html { scroll-padding-top: 12px; }
+body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; left: -999px; top: 8px; z-index: 100; background: #fff; padding: 8px 12px; border-radius: 8px; }
+.skip-link:focus { left: 8px; }
+img, svg { max-width: 100%; }
+.card, .panel, .rp, .dialog-card, .composer, .way, .kv, .laws li, .checklist li, .toast, .profile-bar, .chain li {
+  min-width: 0; overflow-wrap: anywhere; word-wrap: break-word;
+}
+.flow *, .landing-grid * { min-width: 0; }
+.btn, .chip, .tool-btn, .mic-btn, .btn-cta, .lang-switch button {
+  white-space: normal; height: auto; min-height: 44px; text-align: center; overflow-wrap: anywhere;
+}
+.btn.sm { min-height: 40px; }
+input, select, textarea { font-size: 16px; min-height: 44px; } /* iOS avtomatik zoom boʻlmasin */
+textarea { min-height: 88px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.note { font-size: 13.5px; color: var(--ink-2); background: #f1f5f9; border-radius: 10px; padding: 9px 12px; margin: 10px 0 0; }
+.note.warn { background: var(--yellow-soft); color: #78350f; }
+.link-btn { min-height: 44px; }
+
+/* ---------- Titul varaq ---------- */
+.landing { min-height: 100dvh; }
+.landing-grid {
+  position: relative; z-index: 2; flex: 1; display: flex; align-items: center;
+  padding: 20px clamp(16px, 5vw, 72px) max(40px, env(safe-area-inset-bottom));
+}
+.landing-grid .landing-content { padding: 0; max-width: 680px; }
+.land-features { margin-top: 26px; }
+/* Keng ekranda matn bezak (arch-art) ustiga chiqmasin: u oʻng tomonda min(58vw, 860px) egallaydi */
+@media (min-width: 981px) and (max-width: 1360px) {
+  .landing .arch-art { width: 42vw; }
+  .landing-grid .landing-content { max-width: min(680px, 54vw); }
+}
+@media (max-width: 980px) {
+  .landing-grid { align-items: flex-start; padding-top: 12px; }
+}
+@media (max-width: 520px) {
+  .land-title { font-size: clamp(40px, 13vw, 60px); }
+  .land-tagline { margin-top: 10px; }
+  .land-tagline::after { margin-top: 10px; }
+  .land-lead { font-size: 15.5px; margin-top: 10px; }
+  .land-actions { margin-top: 16px; gap: 10px; }
+}
+
+/* ---------- Til tanlagich: tor ekranda ixcham roʻyxat ---------- */
+.lang-switch button { min-width: 44px; }
+.lang-select { display: none; position: relative; align-items: center; gap: 4px; background: rgba(255,255,255,.9); border: 1px solid #d6dbe8; border-radius: 999px; padding: 0 6px 0 10px; }
+.lang-select select { border: 0; background: transparent; min-height: 44px; font-weight: 700; padding: 0 4px; max-width: 46vw; }
+.lang-select.dark { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+.lang-select.dark select { color: #fff; }
+.lang-select.dark option { color: #0f172a; }
+@media (max-width: 460px) {
+  [data-lang-switch] .lang-switch { display: none; }
+  [data-lang-switch] .lang-select { display: inline-flex; }
+}
+
+/* ---------- Ilova sarlavhasi ---------- */
+.brand-text { min-width: 0; }
+@media (max-width: 640px) {
+  .brand-sub { display: none; }
+  .demo-bar { gap: 6px; }
+}
+
+/* ---------- Qadamlar (stepper) ---------- */
+.flow { padding-top: 18px; padding-bottom: 32px; max-width: 980px; }
+.stepper ol { list-style: none; margin: 0 0 16px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stepper button {
+  width: 100%; display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 8px 10px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--card); color: var(--ink-2); font: inherit; font-weight: 600; cursor: pointer; text-align: left;
+}
+.stepper button:disabled { cursor: default; opacity: .75; }
+.stepper .st-n { width: 28px; height: 28px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #f1f5f9; font-weight: 800; }
+.stepper .active button { border-color: var(--header-to); box-shadow: 0 0 0 3px rgba(49, 46, 129, .12); color: var(--ink); }
+.stepper .active .st-n { background: var(--header-to); color: #fff; }
+.stepper .done .st-n { background: var(--accent); color: #fff; }
+.stepper .st-l { line-height: 1.25; min-width: 0; overflow-wrap: anywhere; hyphens: auto; }
+@media (max-width: 480px) {
+  .stepper button { flex-direction: column; justify-content: center; text-align: center; padding: 6px 4px; gap: 4px; }
+  .stepper .st-l { font-size: 12.5px; }
+}
+.stage { outline: none; }
+.stage-foot { text-align: center; margin: 10px 0 0; }
+
+/* ---------- Dialog kartasi (profil, aniqlashtirish) ---------- */
+.dialog-card {
+  max-width: 640px; margin: 8px auto 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, .10); animation: fadeUp .45s ease both;
+}
+.dc-head { display: flex; gap: 12px; align-items: flex-start; padding: 18px 20px 6px; }
+.dc-head h2 { margin: 0; font-size: 21px; line-height: 1.3; }
+.dc-ico { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; font-size: 22px; background: #eef2ff; border: 1px solid #c7d2fe; }
+.dc-lead { margin: 4px 0 0; color: var(--ink-2); font-size: 14.5px; }
+.dc-body { padding: 10px 20px 20px; }
+.fld { margin-bottom: 14px; }
+.fld > label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 6px; color: var(--ink); }
+.fld .req { color: var(--red); }
+.fld input, .fld select, .fld textarea { width: 100%; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 10px 12px; background: #fff; color: var(--ink); font: inherit; font-size: 16px; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { border-color: var(--header-to); outline: none; box-shadow: 0 0 0 3px rgba(49, 46, 129, .15); }
+.fld [aria-invalid="true"] { border-color: var(--red); }
+.fld select:disabled { background: #f1f5f9; }
+.fld-hint { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+.fld-err { margin: 5px 0 0; font-size: 13.5px; color: var(--red); font-weight: 600; }
+.fld-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+@media (max-width: 560px) { .fld-row { grid-template-columns: 1fr; gap: 0; } }
+.fld-contact { border: 1px dashed #cbd5e1; border-radius: 14px; padding: 10px 12px 0; margin: 0 0 12px; }
+.fld-contact legend { font-size: 13.5px; color: var(--ink-2); padding: 0 6px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+.fld.inline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.fld.inline label { margin: 0; }
+.fld.inline input { width: auto; }
+.dc-foot { display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 6px; }
+.dc-foot.split { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
+.dc-status { margin: 0; font-size: 14px; color: var(--yellow); background: var(--yellow-soft); border-radius: 10px; padding: 8px 12px; }
+.dc-status.ok { color: var(--green); background: var(--green-soft); }
+.btn.big { font-size: 17px; min-height: 52px; padding: 12px 22px; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* ---------- Profil satri ---------- */
+.profile-bar { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; margin-bottom: 14px; }
+.pb-ico { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #eef2ff; }
+.pb-text { flex: 1; display: flex; flex-direction: column; font-size: 14px; color: var(--ink-2); }
+.pb-text b { color: var(--ink); font-size: 15px; }
+
+/* ---------- Kiritish qatori (composer) ---------- */
+.composer { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); animation: fadeUp .45s ease both; }
+.composer h2 { margin: 0; font-size: 21px; }
+.cmp-lead { margin: 4px 0 12px; color: var(--ink-2); }
+.cmp-examples { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; font-size: 14px; color: var(--muted); }
+.chip { border: 1px solid #c7d2fe; background: #eef2ff; color: var(--indigo); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.chip:hover { background: #e0e7ff; }
+.cmp-box { border: 2px solid #cbd5e1; border-radius: 18px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.cmp-box:focus-within { border-color: var(--header-to); box-shadow: 0 0 0 4px rgba(49, 46, 129, .12); }
+.cmp-box textarea { width: 100%; border: 0; resize: none; padding: 14px 16px 6px; font: inherit; font-size: 17px; line-height: 1.55; border-radius: 18px 18px 0 0; min-height: 110px; outline: none; overflow-y: auto; }
+/* Asosiy matn + qoʻshimcha maʼlumotlar: kenglikda yonma-yon, mobilda ustma-ust */
+.cmp-fields { display: grid; grid-template-columns: minmax(0, 1fr); }
+.cmp-extra { padding: 8px 16px 10px; border-top: 1px solid #f1f5f9; display: flex; flex-direction: column; gap: 4px; }
+.cmp-extra label { font-weight: 700; font-size: 14.5px; color: var(--ink); }
+.cmp-box .cmp-extra textarea { padding: 8px 10px; border: 1.5px solid #cbd5e1; border-radius: 12px; min-height: 88px; font-size: 16px; line-height: 1.45; }
+.cmp-box .cmp-extra textarea:focus { border-color: var(--header-to); }
+@media (min-width: 768px) {
+  .cmp-fields { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+  .cmp-extra { border-top: 0; border-left: 1px solid #f1f5f9; padding-top: 12px; }
+}
+.cmp-box textarea.just-filled { background: #f0fdfa; transition: background .3s; }
+.cmp-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px 10px 10px; border-top: 1px solid #f1f5f9; }
+.mic-btn {
+  min-width: 56px; min-height: 56px; border-radius: 28px; border: 2px solid var(--header-to); background: var(--header-to); color: #fff;
+  font: inherit; font-weight: 800; font-size: 16px; padding: 6px 18px 6px 12px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+}
+.mic-btn .mic-ico { font-size: 22px; }
+.mic-btn[data-state="recording"] { background: var(--red); border-color: var(--red); animation: micPulse 1.3s ease-in-out infinite; }
+.mic-btn[data-state="transcribing"] { background: var(--muted); border-color: var(--muted); }
+@keyframes micPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, .45); } 50% { box-shadow: 0 0 0 10px rgba(185, 28, 28, 0); } }
+.tool-btn { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 8px 14px; font-weight: 600; cursor: pointer; background: #fff; color: var(--ink); }
+.tool-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+input[type="file"].sr-only:focus-visible + .tool-btn, .tool-btn:focus-within { outline: 3px solid var(--accent); }
+.cmp-count { margin-left: auto; font-size: 13px; color: var(--muted); }
+.cmp-count.warn { color: var(--yellow); font-weight: 600; }
+.send-btn { min-height: 52px; font-size: 16px; padding: 10px 20px; }
+@media (max-width: 560px) {
+  .cmp-tools .send-btn { width: 100%; order: 10; }
+  .cmp-count { width: 100%; margin: 0; order: 9; }
+  .tool-btn { flex: 1 1 auto; justify-content: center; }
+}
+@media (hover: hover) and (pointer: fine) { .tool-btn.cam { display: none; } }
+.voice-status { margin: 10px 0 0; font-size: 15px; border-radius: 12px; padding: 0; }
+.voice-status:not(:empty) { padding: 10px 12px; background: #f1f5f9; }
+.voice-status.recording { background: var(--red-soft); color: var(--red); font-weight: 700; }
+.voice-status.ready { background: var(--green-soft); color: var(--green); }
+.voice-status.error { background: var(--yellow-soft); color: #78350f; }
+.att-errors { color: var(--red); font-size: 14px; margin: 8px 0 0; }
+.att-list { margin-top: 10px; }
+.att-title { margin: 0 0 6px; font-weight: 700; font-size: 14px; }
+.att-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.att-list li { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 12px; padding: 6px 8px; background: #fff; }
+.att-thumb { width: 44px; height: 44px; flex: none; border-radius: 8px; overflow: hidden; display: grid; place-items: center; background: #f1f5f9; font-size: 22px; }
+.att-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.att-name { flex: 1; display: flex; flex-direction: column; font-size: 14px; }
+.att-name small { color: var(--muted); }
+.att-del { min-width: 44px; min-height: 44px; border: 0; border-radius: 10px; background: #fee2e2; color: var(--red); font-size: 16px; cursor: pointer; }
+.cmp-note, .cmp-privacy { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+.cmp-more { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; }
+.cmp-more summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.cmp-more-body { padding-bottom: 12px; display: grid; gap: 8px; }
+.cmp-more-body select { max-width: 320px; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 8px; }
+.ev-set { border: 0; padding: 0; margin: 4px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ev-set legend { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+.ev-set .check { min-height: 44px; }
+@media (max-width: 420px) { .ev-set { grid-template-columns: 1fr; } }
+
+/* ---------- Natija oynalari ---------- */
+.result-top { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.result-top .note { margin: 0; }
+.results { display: grid; gap: 16px; }
+.rp { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); animation: panelIn .55s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 140ms); }
+@keyframes panelIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.rp-head { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.rp-head h3 { margin: 0; font-size: 17px; line-height: 1.35; }
+.rp-body { padding: 16px 18px; }
+.kvs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0 0; }
+.kv { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+.kv dt { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+.kv dd { margin: 2px 0 0; font-size: 14.5px; }
+@media (max-width: 560px) { .kvs { grid-template-columns: 1fr; } }
+.law-meta { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.law-name { color: var(--indigo); }
+.law-name a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.law-arts { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-2); }
+/* Organ: ierarxiya (quyi → oʻrta → yuqori) */
+.org-level { display: inline-block; margin-top: 6px; font-size: 12.5px; font-weight: 700; color: var(--accent-ink); }
+.chain { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; counter-reset: ch; }
+.chain li { position: relative; display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: #fff; }
+.chain li::before { counter-increment: ch; content: counter(ch); width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 13px; background: var(--indigo-soft); color: var(--indigo); }
+.chain .ch-text { display: flex; flex-direction: column; font-size: 14.5px; }
+.chain .ch-role { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+.chain .ch-hint { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
+.tel-list { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.tel-list a { min-height: 32px; display: inline-flex; align-items: center; }
+.also { margin-top: 12px; }
+.also ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; }
+.also li { margin: 4px 0; }
+.checklist { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; border-radius: 10px; padding: 8px 10px; border: 1px solid var(--line); }
+.checklist .ck-ico { width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+.checklist .pass .ck-ico { background: var(--green-soft); color: var(--green); }
+.checklist .fix { border-color: #fca5a5; background: #fff5f5; }
+.checklist .fix .ck-ico { background: var(--red); color: #fff; }
+.checklist .warn { border-color: #fcd34d; background: #fffbeb; }
+.checklist .warn .ck-ico { background: #f59e0b; color: #fff; }
+.ck-tag { font-size: 12px; font-weight: 700; color: var(--muted); }
+.ck-fix { font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+.deadlines { margin: 6px 0 0; padding-left: 20px; }
+.deadlines li { margin: 4px 0; font-weight: 600; }
+.repeat-text { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 10px 12px; font-size: 14.5px; margin: 6px 0 8px; }
+.doc-panel .paper { margin-top: 6px; }
+
+/* ---------- Animatsiyani kamaytirish ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .rp, .dialog-card, .composer, .mic-btn { animation: none !important; }
+}
+
+/* ---------- Chop etish: faqat hujjat ---------- */
+@media print {
+  .stepper, .profile-bar, .result-top, .rp:not(.doc-panel), .doc-panel .rp-head, .doc-meta, .doc-actions, .edit-hint { display: none !important; }
+  .rp, .doc-panel { border: 0 !important; box-shadow: none !important; animation: none !important; }
+  .rp-body { padding: 0 !important; }
+  .flow { padding: 0 !important; }
+}
